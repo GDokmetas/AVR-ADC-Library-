@@ -14,7 +14,7 @@
 #define ADC_REFERENCE ADC_REF_VCC
 
 /*  Define Your ADC Reference 
-    ADC_REF_EXTERNAL : AVCC Pin
+    ADC_REF_EXTERNAL : AREF Pin
     ADC_REF_VCC      : Power Supply
     ADC_REF_INTERNAL : Internal 1.1V Reference 
 */ 
