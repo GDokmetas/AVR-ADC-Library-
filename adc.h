@@ -125,4 +125,4 @@ extern void adc_left_adjust();
 extern uint16_t adc_read_smooth(uint8_t channel);
 // ADC Read + Map Function 
 extern long adc_read_map(uint8_t channel, long out_min, long out_max);
-#endif // 328P_ADC_H
+#endif // ADC_H
