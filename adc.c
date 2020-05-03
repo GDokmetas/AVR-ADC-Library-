@@ -10,11 +10,11 @@ void adc_init(void){
  ADCSRA |= (1<<ADSC); // İlk deneme ölçümünü yap ve diğer ölçüme hazır hale getir. 
 }
 
-extern void adc_deinit(){
+void adc_deinit(){
    ADCSRA &= ~(1<<ADEN); // Shut-down ADC 
 }
 
-extern uint16_t adc_read(uint8_t channel)
+uint16_t adc_read(uint8_t channel)
 {
 	ADMUX &= 0xF0;
 	ADMUX |= channel;
@@ -23,7 +23,7 @@ extern uint16_t adc_read(uint8_t channel)
 	return ADCW;
 }
 
-extern uint16_t adc_read_smooth(uint8_t channel)
+uint16_t adc_read_smooth(uint8_t channel)
 {
 	uint16_t adtotal = 0;
 	for (int i=0; i<10; i++)
@@ -37,7 +37,7 @@ extern uint16_t adc_read_smooth(uint8_t channel)
 	return adtotal / 10;
 }
 
-extern long adc_read_map(uint8_t channel, long out_min, long out_max)
+long adc_read_map(uint8_t channel, long out_min, long out_max)
 {
 	  ADMUX &= 0xF0;
 	  ADMUX |= channel;
@@ -47,7 +47,7 @@ extern long adc_read_map(uint8_t channel, long out_min, long out_max)
 	  x = (x - 0) * (out_max - out_min) / (1023 - 0) + out_min;
 	  return x;
 }
-extern uint16_t adc_read_data()
+uint16_t adc_read_data()
 {
    return ADCW;
 }
@@ -61,7 +61,7 @@ extern void adc_autotrig(uint8_t mode)
    // If you dont want to auto start, comment this and use adc_read() 
 }
 
-extern void adc_interrupt(uint8_t status)
+void adc_interrupt(uint8_t status)
 {
    if (status == 1) // ENABLE INTERRUPTS
    {
