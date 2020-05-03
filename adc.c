@@ -2,12 +2,10 @@
 #include "adc.h"
 
 void adc_init(void){
-    // ADPS Ayarlı Olacak
  ADCSRA |= (ADC_PRESCALER);  
-    // Referans Ayarlı olacak 
  ADMUX |= ((ADC_REFERENCE) << 6);
- ADCSRA |= (1<<ADEN); // ADC'yi Aç
- ADCSRA |= (1<<ADSC); // İlk deneme ölçümünü yap ve diğer ölçüme hazır hale getir. 
+ ADCSRA |= (1<<ADEN); // Enable ADC
+ ADCSRA |= (1<<ADSC); // Make first conversation and ready adc 
 }
 
 void adc_deinit(){
